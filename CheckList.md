@@ -2,41 +2,41 @@
 
 ## Umsetzen eines CI-Prozesses (0-5 Punkte)
 
-- [ ] **Workflows auf «self-hosted» Runner ausgeführt** (Mindestens 1 Runner pro Teammitglied) (0-1 Punkt)
-- [ ] **Linting in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
-- [ ] **Testing in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
-- [ ] **Build-Prozess in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
-- [ ] **Pipeline-Schritte werden im Build-Prozess des Docker-Images ausgeführt** (0-1 Punkt)
+- [AJ/NL] **Workflows auf «self-hosted» Runner ausgeführt** (Mindestens 1 Runner pro Teammitglied) (0-1 Punkt)
+- [x] **Linting in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
+- [x] **Testing in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
+- [NL] **Build-Prozess in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
+- [NL] **Pipeline-Schritte werden im Build-Prozess des Docker-Images ausgeführt** (0-1 Punkt)
 
 ## Zusammenarbeit (0-3 Punkte)
 
-- [ ] **Projekt mit Kanban-Board und sinnvollen Spalten vorhanden** (0-1 Punkt)
-- [ ] **Für jede Anforderung wurde ein Issue angelegt** (0-1 Punkt)
-- [ ] **Issues wurden mit dem Kanban-Board verbunden, zugewiesen und korrekt in den Status überführt** (0-1 Punkt)
+- [AJ] **Projekt mit Kanban-Board und sinnvollen Spalten vorhanden** (0-1 Punkt)
+- [AJ] **Für jede Anforderung wurde ein Issue angelegt** (0-1 Punkt)
+- [AJ] **Issues wurden mit dem Kanban-Board verbunden, zugewiesen und korrekt in den Status überführt** (0-1 Punkt)
 
 ## Umsetzung von neuen Anforderungen (0-4 Punkte)
 
-- [ ] **Darkmode umgesetzt** (0-1 Punkt)
-- [ ] **Aktuell verbundene Benutzer werden im Frontend angezeigt** (0-1 Punkt)
-- [ ] **„Schreibt gerade“ wird im Frontend angezeigt** (0-1 Punkt)
-- [ ] **Backend stellt REST-Endpunkt `/healthcheck` für Monitoring bereit (Status 200/OK)** (0-1 Punkt)
+- [AJ] **Darkmode umgesetzt** (0-1 Punkt)
+- [AJ] **Aktuell verbundene Benutzer werden im Frontend angezeigt** (0-1 Punkt)
+- [NL] **„Schreibt gerade“ wird im Frontend angezeigt** (0-1 Punkt)
+- [NL] **Backend stellt REST-Endpunkt `/healthcheck` für Monitoring bereit (Status 200/OK)** (0-1 Punkt)
 
 ## Branching Strategie (0-2 Punkte)
 
-- [ ] **Strategie eingehalten («master», «development» und mindestens 4 Feature-Branches)** (0-1 Punkt)
-- [ ] **Merging über Pull Requests mit Code Review durch Teampartner durchgeführt** (0-1 Punkt)
+- [NL/AJ] **Strategie eingehalten («master», «development» und mindestens 4 Feature-Branches)** (0-1 Punkt)
+- [NL/AJ] **Merging über Pull Requests mit Code Review durch Teampartner durchgeführt** (0-1 Punkt)
 
 ## Umsetzung eines CD-Prozesses (0-2 Punkte)
 
-- [ ] **Docker-Image wird automatisch in der CI/CD-Pipeline auf Docker Hub hochgeladen** (0-1 Punkt)
-- [ ] **Code im «master»-Branch wird automatisch auf einem Kubernetes-Cluster deployt** (0-1 Punkt)
+- [NL] **Docker-Image wird automatisch in der CI/CD-Pipeline auf Docker Hub hochgeladen** (0-1 Punkt)
+- [NL/AJ] **Code im «master»-Branch wird automatisch auf einem Kubernetes-Cluster deployt** (0-1 Punkt)
 
 ## Monitoring (0-2 Punkte)
 
-- [ ] **Applikation wird über Uptime Kuma kontinuierlich geprüft und Monitoring dokumentiert** (0-1 Punkt)
-- [ ] **Notifier konfiguriert, der bei Ausfall benachrichtigt und dokumentiert ist** (0-1 Punkt)
+- [NL] **Applikation wird über Uptime Kuma kontinuierlich geprüft und Monitoring dokumentiert** (0-1 Punkt)
+- [NL] **Notifier konfiguriert, der bei Ausfall benachrichtigt und dokumentiert ist** (0-1 Punkt)
 
 ## Dokumentation & Erläuterungen (0-2 Punkte)
 
-- [ ] **CI/CD-Prozess korrekt grafisch abgebildet und Teilstücke akkurat beschrieben** (0-1 Punkt)
-- [ ] **Angewendete Branching-Strategie korrekt grafisch dargestellt** (0-1 Punkt)
+- [NL/AJ] **CI/CD-Prozess korrekt grafisch abgebildet und Teilstücke akkurat beschrieben** (0-1 Punkt)
+- [NL/AJ] **Angewendete Branching-Strategie korrekt grafisch dargestellt** (0-1 Punkt)
