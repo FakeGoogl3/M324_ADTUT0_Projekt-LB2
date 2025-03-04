@@ -10,9 +10,9 @@
 
 ## Zusammenarbeit (0-3 Punkte)
 
-- [AJ] **Projekt mit Kanban-Board und sinnvollen Spalten vorhanden** (0-1 Punkt)
-- [AJ] **Für jede Anforderung wurde ein Issue angelegt** (0-1 Punkt)
-- [AJ] **Issues wurden mit dem Kanban-Board verbunden, zugewiesen und korrekt in den Status überführt** (0-1 Punkt)
+- [x] **Projekt mit Kanban-Board und sinnvollen Spalten vorhanden** (0-1 Punkt)
+- [x] **Für jede Anforderung wurde ein Issue angelegt** (0-1 Punkt)
+- [x] **Issues wurden mit dem Kanban-Board verbunden, zugewiesen und korrekt in den Status überführt** (0-1 Punkt)
 
 ## Umsetzung von neuen Anforderungen (0-4 Punkte)
 
@@ -23,7 +23,7 @@
 
 ## Branching Strategie (0-2 Punkte)
 
-- [NL/AJ] **Strategie eingehalten («master», «development» und mindestens 4 Feature-Branches)** (0-1 Punkt)
+- [x] **Strategie eingehalten («master», «development» und mindestens 4 Feature-Branches)** (0-1 Punkt)
 - [NL/AJ] **Merging über Pull Requests mit Code Review durch Teampartner durchgeführt** (0-1 Punkt)
 
 ## Umsetzung eines CD-Prozesses (0-2 Punkte)
@@ -39,4 +39,4 @@
 ## Dokumentation & Erläuterungen (0-2 Punkte)
 
 - [NL/AJ] **CI/CD-Prozess korrekt grafisch abgebildet und Teilstücke akkurat beschrieben** (0-1 Punkt)
-- [NL/AJ] **Angewendete Branching-Strategie korrekt grafisch dargestellt** (0-1 Punkt)
+- [x] **Angewendete Branching-Strategie korrekt grafisch dargestellt** (0-1 Punkt)
