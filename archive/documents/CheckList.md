@@ -5,8 +5,8 @@
 - [AJ/NL] **Workflows auf «self-hosted» Runner ausgeführt** (Mindestens 1 Runner pro Teammitglied) (0-1 Punkt)
 - [x] **Linting in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
 - [x] **Testing in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
-- [NL] **Build-Prozess in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
-- [NL] **Pipeline-Schritte werden im Build-Prozess des Docker-Images ausgeführt** (0-1 Punkt)
+- [x] **Build-Prozess in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
+- [x] **Pipeline-Schritte werden im Build-Prozess des Docker-Images ausgeführt** (0-1 Punkt)
 
 ## Zusammenarbeit (0-3 Punkte)
 
@@ -26,10 +26,10 @@
 - [x] **Strategie eingehalten («master», «development» und mindestens 4 Feature-Branches)** (0-1 Punkt)
 - [NL/AJ] **Merging über Pull Requests mit Code Review durch Teampartner durchgeführt** (0-1 Punkt)
 
-## Umsetzung eines CD-Prozesses (0-2 Punkte)
+## Umsetzung eines CD-Prozesses (0-2 Punkte) - needs Testing
 
-- [NL] **Docker-Image wird automatisch in der CI/CD-Pipeline auf Docker Hub hochgeladen** (0-1 Punkt)
-- [NL/AJ] **Code im «master»-Branch wird automatisch auf einem Kubernetes-Cluster deployt** (0-1 Punkt)
+- [x] **Docker-Image wird automatisch in der CI/CD-Pipeline auf Docker Hub hochgeladen** (0-1 Punkt)
+- [x] **Code im «master»-Branch wird automatisch auf einem Kubernetes-Cluster deployt** (0-1 Punkt)
 
 ## Monitoring (0-2 Punkte)
 
