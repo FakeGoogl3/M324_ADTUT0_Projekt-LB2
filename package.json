@@ -7,7 +7,7 @@
     "build": "rimraf ./build && tsc",
     "dev": "npx nodemon",
     "start": "node build/index.js",
-    "lint": "eslint '*.{js,ts}' --max-warnings=0",
+    "lint": "eslint . --ext .js,.ts --max-warnings=0",
     "test": "jest"
   },
   "keywords": [],
