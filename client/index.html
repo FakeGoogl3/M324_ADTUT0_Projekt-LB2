@@ -11,18 +11,22 @@
     <script src="/script.js"></script>
     <script src="./darkmode.js" defer></script>
   </head>
-  <body class="">
+  <body>
     <div class="app-frame">
       <div class="chat-frame">
         <div class="header-container">
           <button class="theme-switch" id="theme-switch">
-            <img src="./assets/darkmode-icon/darkmode.svg">
-            <img src="./assets/lightmode-icon/lightmode.svg">
+            <img src="./assets/darkmode-icon/darkmode.svg" alt="Dark Mode">
+            <img src="./assets/lightmode-icon/lightmode.svg" alt="Light Mode">
           </button>
           <p class="header-content">LB1 Chat - M324</p>
         </div>
-        <div class="chat-room" id="messages"></div>
-        <div class="send-container">
+
+        <div class="chat-room flex-grow flex flex-col justify-start p-4 gap-4 overflow-y-auto" id="messages"></div>
+        
+        <p id="typingStatus"></p>
+
+        <div class="send-container bg-gray-100 px-4 py-4 flex items-center rounded-t">
           <input
             id="messageInput"
             type="text"
