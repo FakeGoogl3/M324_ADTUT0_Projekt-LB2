@@ -1,7 +1,7 @@
-import { Server } from 'http';
-import { Server as WSServer, WebSocket, RawData } from 'ws';
-import { DebouncedFunction, Message, User } from './interfaces';
-import { debounce } from 'lodash';
+import { Server } from "http";
+import { Server as WSServer, WebSocket, RawData } from "ws";
+import { DebouncedFunction, Message, User } from "./interfaces";
+import { debounce } from "lodash";
 
 let websocketServer: WSServer;
 
@@ -10,7 +10,7 @@ const typingUsers: User[] = [];
 
 // Broadcast a message to all connected clients
 const broadcastMessage = (message: Message) => {
-  console.log('Broadcasting message', message);
+  console.log("Broadcasting message", message);
   websocketServer.clients.forEach((client) => {
     client.send(JSON.stringify(message));
   });
@@ -19,26 +19,26 @@ const broadcastMessage = (message: Message) => {
 // Intiiate the websocket server
 const initializeWebsocketServer = (server: Server) => {
   websocketServer = new WSServer({ server });
-  websocketServer.on('connection', onConnection);
+  websocketServer.on("connection", onConnection);
 };
 
 // If a new connection is established, the onConnection function is called
 const onConnection = (ws: WebSocket) => {
-  console.log('New websocket connection');
-  ws.on('message', (message) => onMessage(ws, message));
-  ws.on('close', () => onClose(ws));
+  console.log("New websocket connection");
+  ws.on("message", (message) => onMessage(ws, message));
+  ws.on("close", () => onClose(ws));
 };
 
 // If a connection is closed, the onClose function is called
 const onClose = (ws: WebSocket) => {
-  console.log('Websocket connection closed');
+  console.log("Websocket connection closed");
   const userIndex = activeUsers.findIndex((user) => user.ws === ws);
   if (userIndex !== -1) {
-    console.log('User disconnected:', activeUsers[userIndex].name);
+    console.log("User disconnected:", activeUsers[userIndex].name);
     const removedUser = activeUsers.splice(userIndex, 1);
     removeTypingStatus(removedUser[0].id);
     broadcastMessage({
-      type: 'activeUsers',
+      type: "activeUsers",
       users: activeUsers,
     });
   }
@@ -50,50 +50,56 @@ const removeTypingStatus = (userId: string) => {
   if (userIndex !== -1) {
     typingUsers.splice(userIndex, 1);
     broadcastMessage({
-      type: 'typing',
+      type: "typing",
       users: typingUsers,
     });
   }
 };
-const typingUsersDebounced: { [key: string]: DebouncedFunction } = {};
+const typingUsersDebounced: { [key: string]: ReturnType<typeof debounce> } = {};
 
 // If a new message is received, the onMessage function is called
-  const onMessage = (ws: WebSocket, message: RawData) => {
+const onMessage = (ws: WebSocket, message: RawData) => {
   const messageObject = JSON.parse(message.toString()) as Message;
-  console.log('Message received', messageObject);
+  console.log("Message received", messageObject);
   switch (messageObject.type) {
-    case 'newUser':
-      if (!messageObject.user?.id || activeUsers.find((user) => user.id === messageObject.user?.id)) return;
+    case "newUser":
+      if (
+        !messageObject.user?.id ||
+        activeUsers.find((user) => user.id === messageObject.user?.id)
+      )
+        return;
       activeUsers.push({ ...messageObject.user, ws });
-      console.log('New user connected:', messageObject.user?.name);
+      console.log("New user connected:", messageObject.user?.name);
       broadcastMessage({
-        type: 'activeUsers',
+        type: "activeUsers",
         users: activeUsers.map((user) => ({ id: user.id, name: user.name })),
       });
       break;
-    case 'message':
+    case "message":
       if (!messageObject.user?.id || !messageObject.message) return;
       removeTypingStatus(messageObject.user.id);
       broadcastMessage({
-        type: 'message',
+        type: "message",
         user: messageObject.user,
         message: messageObject.message,
       });
       break;
-    case 'typing': {
+    case "typing": {
       if (!messageObject.user?.id) return;
-      console.log('typing', messageObject.user?.name);
-      const existingUser = typingUsers.find((user) => user.id === messageObject.user?.id);
+      console.log("typing", messageObject.user?.name);
+      const existingUser = typingUsers.find(
+        (user) => user.id === messageObject.user?.id
+      );
       if (existingUser) {
         typingUsersDebounced[messageObject.user.id]?.cancel();
       } else {
         typingUsers.push(messageObject.user);
         broadcastMessage({
-          type: 'typing',
+          type: "typing",
           users: typingUsers,
         });
       }
-        typingUsersDebounced[messageObject.user.id] = debounce(() => {
+      typingUsersDebounced[messageObject.user.id] = debounce(() => {
         if (!messageObject.user?.id) return;
         removeTypingStatus(messageObject.user.id);
       }, 2000);
@@ -105,4 +111,4 @@ const typingUsersDebounced: { [key: string]: DebouncedFunction } = {};
   }
 };
 
- export { initializeWebsocketServer };
+export { initializeWebsocketServer };
