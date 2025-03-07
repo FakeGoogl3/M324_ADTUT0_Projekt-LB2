@@ -18,8 +18,8 @@
 
 - [x] **Darkmode umgesetzt** (0-1 Punkt)
 - [AJ] **Aktuell verbundene Benutzer werden im Frontend angezeigt** (0-1 Punkt)
-- [NL] **„Schreibt gerade“ wird im Frontend angezeigt** (0-1 Punkt)
-- [NL] **Backend stellt REST-Endpunkt `/healthcheck` für Monitoring bereit (Status 200/OK)** (0-1 Punkt)
+- [x] **„Schreibt gerade“ wird im Frontend angezeigt** (0-1 Punkt)
+- [x] **Backend stellt REST-Endpunkt `/healthcheck` für Monitoring bereit (Status 200/OK)** (0-1 Punkt)
 
 ## Branching Strategie (0-2 Punkte) 1/2
 
