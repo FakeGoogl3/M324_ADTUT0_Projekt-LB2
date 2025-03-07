@@ -1,83 +1,61 @@
 (async () => {
   const myUser = await generateRandomUser();
+  let activeUsers = [];
   let typingUsers = [];
 
   const socket = new WebSocket(generateBackendUrl());
-
-  socket.addEventListener("open", () => {
-    console.log("WebSocket connected!");
-    socket.send(JSON.stringify({ type: "newUser", user: myUser }));
+  socket.addEventListener('open', () => {
+    console.log('WebSocket connected!');
+    socket.send(JSON.stringify({ type: 'newUser', user: myUser }));
   });
-
-  socket.addEventListener("message", (event) => {
+  socket.addEventListener('message', (event) => {
     const message = JSON.parse(event.data);
-    console.log("WebSocket message:", message);
-
+    console.log('WebSocket message:', message);
     switch (message.type) {
-      case "message": {
+      case 'message':
         const messageElement = generateMessage(message, myUser);
-        document.getElementById("messages").appendChild(messageElement);
+        document.getElementById('messages').appendChild(messageElement);
         setTimeout(() => {
-          messageElement.classList.add("opacity-100");
+          messageElement.classList.add('opacity-100');
         }, 100);
         break;
-      }
-
-      case "typing":
-        typingUsers = message.users;
-        updateTypingUI(typingUsers);
+      case 'activeUsers':
+        activeUsers = message.users;
         break;
-
+      case 'typing':
+        typingUsers = message.users;
+        break;
       default:
         break;
     }
   });
-
-  socket.addEventListener("close", () => {
-    console.log("WebSocket closed.");
+  socket.addEventListener('close', (event) => {
+    console.log('WebSocket closed.');
+  });
+  socket.addEventListener('error', (event) => {
+    console.error('WebSocket error:', event);
   });
 
-  socket.addEventListener("error", (event) => {
-    console.error("WebSocket error:", event);
-  });
-
-  // Wait until the DOM is fully loaded before adding event listeners
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("sendButton").addEventListener("click", () => {
-      sendMessage();
-    });
-
-    document.getElementById("messageInput").addEventListener("input", () => {
-      socket.send(JSON.stringify({ type: "typing", user: myUser }));
-    });
-
-    document.getElementById("messageInput").addEventListener("keydown", (event) => {
-      if (event.key.length === 1) {
-        socket.send(JSON.stringify({ type: "typing", user: myUser }));
-      }
-
-      if (event.key === "Enter") {
-        sendMessage();
-      }
+  // Wait until the DOM is loaded before adding event listeners
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Send a message when the send button is clicked
+    document.getElementById('sendButton').addEventListener('click', () => {
+      const message = document.getElementById('messageInput').value;
+      socket.send(JSON.stringify({ type: 'message', message, user: myUser }));
+      document.getElementById('messageInput').value = '';
     });
   });
 
-  function sendMessage() {
-    const message = document.getElementById("messageInput").value.trim();
-    if (message) {
-      socket.send(JSON.stringify({ type: "message", message, user: myUser }));
-      document.getElementById("messageInput").value = "";
+  document.addEventListener('keydown', (event) => {
+    // Only send if the typed in key is not a modifier key
+    if (event.key.length === 1) {
+      socket.send(JSON.stringify({ type: 'typing', user: myUser }));
     }
-  }
-
-  function updateTypingUI(typingUsers) {
-    const typingDiv = document.getElementById("typingStatus");
-    if (!typingDiv) return;
-
-    if (typingUsers.length > 0) {
-      typingDiv.innerText = `${typingUsers.map((user) => user.name).join(", ")} is typing...`;
-    } else {
-      typingDiv.innerText = "";
+    // Only send if the typed in key is the enter key
+    if (event.key === 'Enter') {
+      const message = document.getElementById('messageInput').value;
+      socket.send(JSON.stringify({ type: 'message', message, user: myUser }));
+      document.getElementById('messageInput').value = '';
     }
-  }
+  });
 })();
