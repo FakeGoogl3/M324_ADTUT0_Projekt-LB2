@@ -9,6 +9,9 @@
     --send-button-hover: #22d3ee;
     --body-bg-color: #f9fafb;
     --theme-switch-bg-color: #cdcfcf;
+    --message-container-bg-color: #ffffff;
+    --message-container-text-color: #000000;
+    
 }
 
 .darkmode {
@@ -21,6 +24,8 @@
     --send-button-color: #60a5fa;
     --send-button-hover: #3b82f6;
     --body-bg-color: #121212;
+    --message-container-bg-color: #121212;
+    --message-container-text-color: #efefef;
 }
 
 .theme-switch {
@@ -136,6 +141,8 @@ body {
     padding-right: 1rem;
     border-radius: 9999px;
     border-color: var(--border-color);
+    background-color: var(--message-container-bg-color);
+    color: var(--message-container-text-color);
 }
 
 .message-container:focus {
