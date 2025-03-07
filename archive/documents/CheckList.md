@@ -2,7 +2,7 @@
 
 ## Umsetzen eines CI-Prozesses (0-5 Punkte) 4/5
 
-- [AJ/NL] **Workflows auf «self-hosted» Runner ausgeführt** (Mindestens 1 Runner pro Teammitglied) (0-1 Punkt)
+- [x] **Workflows auf «self-hosted» Runner ausgeführt** (Mindestens 1 Runner pro Teammitglied) (0-1 Punkt)
 - [x] **Linting in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
 - [x] **Testing in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
 - [x] **Build-Prozess in der Pipeline** (Falls dieser Prozess fehlschlägt, wird die Pipeline unterbrochen) (0-1 Punkt)
@@ -18,13 +18,13 @@
 
 - [x] **Darkmode umgesetzt** (0-1 Punkt)
 - [AJ] **Aktuell verbundene Benutzer werden im Frontend angezeigt** (0-1 Punkt)
-- [NL] **„Schreibt gerade“ wird im Frontend angezeigt** (0-1 Punkt)
-- [NL] **Backend stellt REST-Endpunkt `/healthcheck` für Monitoring bereit (Status 200/OK)** (0-1 Punkt)
+- [x] **„Schreibt gerade“ wird im Frontend angezeigt** (0-1 Punkt)
+- [x] **Backend stellt REST-Endpunkt `/healthcheck` für Monitoring bereit (Status 200/OK)** (0-1 Punkt)
 
 ## Branching Strategie (0-2 Punkte) 1/2
 
 - [x] **Strategie eingehalten («master», «development» und mindestens 4 Feature-Branches)** (0-1 Punkt)
-- [NL/AJ] **Merging über Pull Requests mit Code Review durch Teampartner durchgeführt** (0-1 Punkt)
+- [x] **Merging über Pull Requests mit Code Review durch Teampartner durchgeführt** (0-1 Punkt)
 
 ## Umsetzung eines CD-Prozesses (0-2 Punkte) - needs Testing 2/2
 
@@ -33,10 +33,10 @@
 
 ## Monitoring (0-2 Punkte) 0/2
 
-- [NL] **Applikation wird über Uptime Kuma kontinuierlich geprüft und Monitoring dokumentiert** (0-1 Punkt)
-- [NL] **Notifier konfiguriert, der bei Ausfall benachrichtigt und dokumentiert ist** (0-1 Punkt)
+- [x] **Applikation wird über Uptime Kuma kontinuierlich geprüft und Monitoring dokumentiert** (0-1 Punkt)
+- [x] **Notifier konfiguriert, der bei Ausfall benachrichtigt und dokumentiert ist** (0-1 Punkt)
 
 ## Dokumentation & Erläuterungen (0-2 Punkte) 1/2
 
-- [NL/AJ] **CI/CD-Prozess korrekt grafisch abgebildet und Teilstücke akkurat beschrieben** (0-1 Punkt)
+- [x] **CI/CD-Prozess korrekt grafisch abgebildet und Teilstücke akkurat beschrieben** (0-1 Punkt)
 - [x] **Angewendete Branching-Strategie korrekt grafisch dargestellt** (0-1 Punkt)
