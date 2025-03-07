@@ -8,7 +8,7 @@ on:
 
 jobs:
   Kubernetes:
-    runs-on: [self-hosted, linux, x64, multipass]
+    runs-on: [self-hosted, linux, x64]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4      
