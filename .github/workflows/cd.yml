@@ -8,7 +8,7 @@ on:
 
 jobs:
   Kubernetes:
-    runs-on: [self-hosted, linux, x64, multipass]
+    runs-on: [self-hosted, linux, x64]
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4      
@@ -20,7 +20,7 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        
+
       - name: Build a Docker Image
         uses: docker/build-push-action@v6
         with:
