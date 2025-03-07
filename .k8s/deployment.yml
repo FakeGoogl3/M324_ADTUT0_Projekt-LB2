@@ -18,11 +18,12 @@ spec:
     spec:
       containers:
         - name: fakegoogle # Change this to your app name
-          image: jerrythemyth/fakegoogle:1.0.0 # Change this to your image tag
+          image: jerrythemyth/fakegoogle:${IMAGE_TAG} # Change this to your image tag
           command:
             - /bin/sh
             - "-c"
             - yarn start
+            
           startupProbe:
             httpGet:
               path: /
