@@ -10,8 +10,6 @@ import { WebSocket } from "ws";
 const app = express();
 const server = http.createServer(app);
 
-const myVar = 1;
-
 // create a livereload server
 const env = process.env.NODE_ENV || "development";
 if (env !== "production" && env !== "test") {
