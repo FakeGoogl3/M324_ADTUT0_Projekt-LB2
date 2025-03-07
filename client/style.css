@@ -25,7 +25,33 @@
   --body-bg-color: #121212;
   --message-container-bg-color: #121212;
   --message-container-text-color: #efefef;
+  --text-online-users: #ffffff;
 }
+
+.onlineUsers {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.1); /* Leicht transparente Hintergrundfarbe */
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  color: var(--text-online-users);
+  font-weight: 200;
+}
+
+/* Anpassung für kleinere Bildschirme */
+@media (max-width: 600px) {
+  .onlineUsers {
+    font-size: 12px;
+    padding: 6px 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Zentriert es mittig */
+    top: 10px;
+  }
+}
+
 
 .theme-switch {
   height: 40px;

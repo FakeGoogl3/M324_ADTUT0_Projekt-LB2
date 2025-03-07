@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         break;
       case "activeUsers":
         activeUsers = message.users;
+        document.getElementById('activeUsers').textContent = `${activeUsers.map(user => user.name).join(', ')}`
         break;
       case "typing":
         typingUsers = message.users;
