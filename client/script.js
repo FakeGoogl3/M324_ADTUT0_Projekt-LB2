@@ -1,6 +1,5 @@
 (async () => {
   const myUser = await generateRandomUser();
-  let activeUsers = [];
   let typingUsers = [];
 
   const socket = new WebSocket(generateBackendUrl());
@@ -15,17 +14,14 @@
     console.log("WebSocket message:", message);
 
     switch (message.type) {
-      case "message":
+      case "message": {
         const messageElement = generateMessage(message, myUser);
         document.getElementById("messages").appendChild(messageElement);
         setTimeout(() => {
           messageElement.classList.add("opacity-100");
         }, 100);
         break;
-
-      case "activeUsers":
-        activeUsers = message.users;
-        break;
+      }
 
       case "typing":
         typingUsers = message.users;
@@ -47,17 +43,14 @@
 
   // Wait until the DOM is fully loaded before adding event listeners
   document.addEventListener("DOMContentLoaded", () => {
-    // Send a message when the send button is clicked
     document.getElementById("sendButton").addEventListener("click", () => {
       sendMessage();
     });
 
-    // Detect when the user starts typing
     document.getElementById("messageInput").addEventListener("input", () => {
       socket.send(JSON.stringify({ type: "typing", user: myUser }));
     });
 
-    // Detect key presses in the input field
     document.getElementById("messageInput").addEventListener("keydown", (event) => {
       if (event.key.length === 1) {
         socket.send(JSON.stringify({ type: "typing", user: myUser }));
@@ -69,7 +62,6 @@
     });
   });
 
-  // Function to send a message
   function sendMessage() {
     const message = document.getElementById("messageInput").value.trim();
     if (message) {
@@ -78,10 +70,9 @@
     }
   }
 
-  // Function to update the UI with users currently typing
   function updateTypingUI(typingUsers) {
     const typingDiv = document.getElementById("typingStatus");
-    if (!typingDiv) return; // Prevents errors if the element is missing
+    if (!typingDiv) return;
 
     if (typingUsers.length > 0) {
       typingDiv.innerText = `${typingUsers.map((user) => user.name).join(", ")} is typing...`;

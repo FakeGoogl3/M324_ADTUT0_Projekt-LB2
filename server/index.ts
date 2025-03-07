@@ -10,8 +10,6 @@ import { WebSocket } from "ws";
 const app = express();
 const server = http.createServer(app);
 
-const myVar = 1;
-
 // create a livereload server
 const env = process.env.NODE_ENV || "development";
 if (env !== "production" && env !== "test") {
@@ -49,11 +47,14 @@ if (env !== "test") {
   startServer(serverPort);
 }
 
-const waitForSocketState = (socket: WebSocket, state: any) => {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
+const waitForSocketState = (
+  socket: WebSocket,
+  state: WebSocket["readyState"]
+): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
       if (socket.readyState === state) {
-        resolve(undefined);
+        resolve();
       } else {
         waitForSocketState(socket, state).then(resolve);
       }

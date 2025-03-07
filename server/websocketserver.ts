@@ -32,7 +32,9 @@ const onClose = (ws: WebSocket) => {
   const userIndex = activeUsers.findIndex((user) => user.ws === ws);
   if (userIndex !== -1) {
     const removedUser = activeUsers.splice(userIndex, 1);
-    removeTypingStatus(removedUser[0].id);
+    if (removedUser.length > 0) {
+      removeTypingStatus(removedUser[0].id);
+    }
     broadcastMessage({ type: "activeUsers", users: activeUsers });
   }
 };
@@ -55,27 +57,41 @@ const onMessage = (ws: WebSocket, message: RawData) => {
 
   switch (msg.type) {
     case "newUser":
-      if (activeUsers.some((user) => user.id === msg.user!.id)) return;
+      if (activeUsers.some((user) => user.id === msg.user.id)) return;
       activeUsers.push({ ...msg.user, ws });
-      broadcastMessage({ type: "activeUsers", users: activeUsers.map(({ id, name }) => ({ id, name })) });
+      broadcastMessage({
+        type: "activeUsers",
+        users: activeUsers.map(({ id, name }) => ({ id, name })),
+      });
       break;
 
     case "message":
       if (!msg.message) return;
-      removeTypingStatus(msg.user!.id);
-      broadcastMessage({ type: "message", user: msg.user, message: msg.message });
+      removeTypingStatus(msg.user.id);
+      broadcastMessage({
+        type: "message",
+        user: msg.user,
+        message: msg.message,
+      });
       break;
 
     case "typing":
-      if (!typingUsers.some((u) => u.id === msg.user!.id)) {
-        typingUsers.push(msg.user!);
+      if (!typingUsers.some((u) => u.id === msg.user.id)) {
+        typingUsers.push(msg.user);
         broadcastMessage({ type: "typing", users: typingUsers });
       }
 
-      if (typingUsersDebounced[msg.user!.id]) typingUsersDebounced[msg.user!.id].cancel();
+      if (typingUsersDebounced[msg.user.id]) {
+        typingUsersDebounced[msg.user.id].cancel();
+      }
 
-      typingUsersDebounced[msg.user!.id] = debounce(() => removeTypingStatus(msg.user!.id), 2000);
-      typingUsersDebounced[msg.user!.id]();
+      typingUsersDebounced[msg.user.id] = debounce(() => {
+        if (msg.user?.id) {
+          removeTypingStatus(msg.user.id);
+        }
+      }, 2000);
+
+      typingUsersDebounced[msg.user.id]();
       break;
   }
 };
