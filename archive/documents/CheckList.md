@@ -17,7 +17,7 @@
 ## Umsetzung von neuen Anforderungen (0-4 Punkte) 4/4
 
 - [x] **Darkmode umgesetzt** (0-1 Punkt)
-- [x] **Aktuell verbundene Benutzer werden im Frontend angezeigt** (0-1 Punkt)
+- [x] **Aktuell verbundene Benutzer werden im Frontend angezeigt** [AJ] (0-1 Punkt)
 - [x] **„Schreibt gerade“ wird im Frontend angezeigt** (0-1 Punkt)
 - [x] **Backend stellt REST-Endpunkt `/healthcheck` für Monitoring bereit (Status 200/OK)** (0-1 Punkt)
 
