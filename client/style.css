@@ -1,3 +1,170 @@
+:root {
+    --base-color: #ebe9e9;
+    --header-bg: #3b82f6;
+    --header-text: #ffffff;
+    --chat-bg: #f3f4f6;
+    --border-color: #e5e7eb;
+    --focus-ring-color: rgb(103 232 249);
+    --send-button-color: #67e8f9;
+    --send-button-hover: #22d3ee;
+    --body-bg-color: #f9fafb;
+    --theme-switch-bg-color: #cdcfcf;
+    --message-container-bg-color: #ffffff;
+    --message-container-text-color: #000000;
+    
+}
+
+.darkmode {
+    --base-color: #1e1e1e;
+    --header-bg: #1f2937;
+    --header-text: #f9fafb;
+    --chat-bg: #374151;
+    --border-color: #4b5563;
+    --focus-ring-color: rgb(59 130 246);
+    --send-button-color: #60a5fa;
+    --send-button-hover: #3b82f6;
+    --body-bg-color: #121212;
+    --message-container-bg-color: #121212;
+    --message-container-text-color: #efefef;
+}
+
+.theme-switch {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: var(--theme-switch-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Position it relative to .header-container */
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%); /* Center vertically */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-switch:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+}
+
+.theme-switch img:last-child {
+    display: none;
+}
+
+.darkmode .theme-switch img:first-child {
+    display: none;
+}
+
+.darkmode .theme-switch img:last-child {
+    display: block;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: var(--body-bg-color);
+}
+
+.app-frame {
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+}
+
+.chat-frame {
+    max-width: 42rem;
+    width: 100%;
+    background-color: var(--base-color);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    .chat-frame {
+        width: 75%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .chat-frame {
+        width: 50%;
+    }
+}
+
+.header-container {
+    background-color: var(--header-bg);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    position: relative;
+}
+
+.header-content {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: var(--header-text);
+}
+
+.chat-room {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.send-container {
+    background-color: var(--chat-bg);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.message-container {
+    flex-grow: 1;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    border-radius: 9999px;
+    border-color: var(--border-color);
+    background-color: var(--message-container-bg-color);
+    color: var(--message-container-text-color);
+}
+
+.message-container:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-opacity: 1;
+    --tw-ring-color: var(--focus-ring-color);
+}
+
+.send-button {
+    margin-left: 1rem;
+    color: var(--send-button-color);
+}
+
+.send-button:hover {
+    color: var(--send-button-hover);
+}
+
+.send-button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
