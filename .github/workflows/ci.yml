@@ -2,9 +2,9 @@ name: ci
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
-  push:
+  pull_request:
     branches:
-      - main  # Wird nur getriggered, wenn Code in "master" gepusht wird (z.B. nach einem Merge)
+      - main # Wird nur getriggered, wenn Code in "master" gepusht wird (z.B. nach einem Merge)
 
 jobs:
   Docker:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-        
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
